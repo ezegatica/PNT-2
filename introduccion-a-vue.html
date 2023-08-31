@@ -1,0 +1,33 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="item in lista" :key="item">
+        {{ item }}
+        </li>
+    </ul>
+    <hr>
+    <form action="">
+        <input type="text" name="item" id="item" v-model="item">
+        <input type="submit" value="Agregar" @click.prevent="agregar">
+    </form>
+</div>
+
+<script>
+  const { createApp, ref } = Vue
+
+  createApp({
+    data() {
+        return {
+            lista: [4, 6, 3, 2, -3, 2]
+        }
+    },
+    methods: {
+        agregar() {
+            this.lista.push(this.item)
+            this.item = ''
+        },
+        
+    }
+  }).mount('#app')
+</script>
