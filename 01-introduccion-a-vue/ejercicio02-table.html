@@ -3,13 +3,27 @@
 <div id="app">
   <h1>Clientes</h1>
   <h2>Lista</h2>
-  <ul>
-    <li v-for="cliente in clientes" :key="cliente.id">
-      {{ cliente.id }} - {{ cliente.nombre }} - {{ cliente.edad }} |
-      <button v-on:click="borrar(cliente.id)">X</button> |
-      <button v-on:click="editar(cliente)">EDITAR</button>
-    </li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="cliente in clientes" :key="cliente.id">
+        <td>{{ cliente.id }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.edad }}</td>
+        <td>
+          <button v-on:click="borrar(cliente.id)">X</button> |
+          <button v-on:click="editar(cliente)">EDITAR</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <hr />
   <h2>{{editando ? 'Editar' : 'Agregar'}}</h2>
   <form>
