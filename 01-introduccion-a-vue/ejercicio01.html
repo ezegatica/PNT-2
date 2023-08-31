@@ -7,9 +7,9 @@
         </li>
     </ul>
     <hr>
-    <form action="">
-        <input type="text" name="item" id="item" v-model="item">
-        <input type="submit" value="Agregar" @click.prevent="agregar">
+    <form @submit.prevent="agregar">
+        <input type="number" step="1" v-model="item">
+        <input type="submit" value="Agregar" >
     </form>
 </div>
 
@@ -19,13 +19,15 @@
   createApp({
     data() {
         return {
-            lista: [4, 6, 3, 2, -3, 2]
+            lista: [4, 6, 3, 2, -3, 2],
+            item: 0
         }
     },
     methods: {
-        agregar() {
+        agregar(e) {
+            e.preventDefault();
             this.lista.push(this.item)
-            this.item = ''
+            this.item = 0
         },
         
     }
